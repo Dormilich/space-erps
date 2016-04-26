@@ -1,0 +1,1563 @@
+<!DOCTYPE html>
+<html lang="de">
+    <head profile="http://dublincore.org/documents/dcq-html/">
+        <title>Space ERPS</title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width">
+        <meta name="DC.creator" content="Bertold von Dormilich">
+        <meta name="DC.coverage" content="Germany">
+        <meta name="DC.language" content="de">
+        <meta name="DC.license" content="MIT">
+        <meta name="DC.contributor" content="Ernst-Joachim Preussler">
+        <meta name="DC.contributor" content="Viktor Ahrens">
+        <script src="https://code.jquery.com/jquery-2.1.4.js"></script>
+        <link rel="stylesheet" type="text/css" href="css/web.css">
+    </head>
+    <body>
+        <input type="hidden" id="gp" value="140">
+        <input type="hidden" id="fp" value="50">
+        <ul class="frame">
+            <li>
+                <table cellspacing="0">
+                    <caption>Charakter</caption>
+                    <colgroup>
+                        <col style="width: 20%">
+                        <col style="width: 60%">
+                        <col style="width: 10%">
+                        <col style="width: 10%">
+                    </colgroup>
+                    <tbody>
+                        <tr>
+                            <td>
+                                <strong>Name:</strong>
+                            </td>
+                            <td>
+                                <input type="text">
+                            </td>
+                            <td class="center" title="Generierungspunkte">
+                                <strong>GP</strong>
+                            </td>
+                            <td class="center" title="Fertigkeitspunkte">
+                                <strong>FP</strong>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <strong>Rasse:</strong>
+                            </td>
+                            <td>
+                                <select size="1" id="rasse">
+                                    <option></option>
+                                    <option data-str="0" data-ges="0" data-bew="0" data-kon="0" data-cyb="0" data-bil="0" data-cha="0" data-psi="0" data-seh="0" data-hrv="0" data-ger="0" data-gsm="0" data-tst="0" data-int="0" data-tp="0">
+                                        Mensch
+                                    </option>
+                                    <option data-str="-2" data-ges="0" data-bew="-2" data-kon="-4" data-cyb="-4" data-bil="0" data-cha="0" data-psi="5" data-seh="0" data-hrv="0" data-ger="0" data-gsm="0" data-tst="0" data-int="-4" data-tp="0">
+                                        Psyker
+                                    </option>
+                                    <option data-str="-5" data-ges="1" data-bew="-3" data-kon="-3" data-cyb="-5" data-bil="1" data-cha="1" data-psi="1" data-seh="6" data-hrv="4" data-ger="1" data-gsm="1" data-tst="-3" data-int="0" data-tp="0">
+                                        Tiroo
+                                    </option>
+                                    <option data-str="4" data-ges="0" data-bew="-1" data-kon="4" data-cyb="0" data-bil="-3" data-cha="0" data-psi="-1" data-seh="0" data-hrv="4" data-ger="4" data-gsm="1" data-tst="-4" data-int="0" data-tp="5">
+                                        Manka
+                                    </option>
+                                    <option data-str="5" data-ges="0" data-bew="-2" data-kon="3" data-cyb="0" data-bil="0" data-cha="-2" data-psi="-2" data-seh="5" data-hrv="0" data-ger="2" data-gsm="2" data-tst="-5" data-int="0" data-tp="5">
+                                        Ssisch
+                                    </option>
+                                    <option data-str="1" data-ges="1" data-bew="0" data-kon="2" data-cyb="-4" data-bil="0" data-cha="0" data-psi="0" data-seh="2" data-hrv="-1" data-ger="-1" data-gsm="-1" data-tst="-1" data-int="5" data-tp="0">
+                                        Shinlei
+                                    </option>
+                                    <optgroup label="Ne">
+                                        <option data-str="3" data-ges="-2" data-bew="4" data-kon="0" data-cyb="-3" data-bil="0" data-cha="-1" data-psi="0" data-seh="1" data-hrv="6" data-ger="3" data-gsm="-3" data-tst="-2" data-int="0" data-tp="5">
+                                            Löwe (Ne’toh)
+                                        </option>
+                                        <option data-str="4" data-ges="-2" data-bew="2" data-kon="2" data-cyb="-4" data-bil="0" data-cha="-1" data-psi="0" data-seh="1" data-hrv="6" data-ger="3" data-gsm="-3" data-tst="-2" data-int="0" data-tp="5">
+                                            Tiger (Ne’bahk)
+                                        </option>
+                                        <option data-str="2" data-ges="-2" data-bew="5" data-kon="0" data-cyb="-3" data-bil="0" data-cha="-1" data-psi="0" data-seh="1" data-hrv="6" data-ger="3" data-gsm="-3" data-tst="-2" data-int="0" data-tp="5">
+                                            Jaguar (Ne’sima)
+                                        </option>
+                                        <option data-str="1" data-ges="-1" data-bew="5" data-kon="0" data-cyb="-3" data-bil="0" data-cha="-1" data-psi="" data-seh="1" data-hrv="6" data-ger="3" data-gsm="-3" data-tst="-2" data-int="0" data-tp="5">
+                                            Gepard (Ne’kesche)
+                                        </option>
+                                    </optgroup>
+                                    <optgroup label="KrKrKr">
+                                        <option data-str="2" data-ges="-2" data-bew="-3" data-kon="0" data-cyb="-2" data-bil="1" data-cha="0" data-psi="2" data-seh="-2" data-hrv="0" data-ger="5" data-tst="-1" data-int="2" data-stf="0" data-tp="0">
+                                            Krabbe (Pr’tlac, ♀)
+                                        </option>
+                                        <option data-str="5" data-ges="-5" data-bew="-5" data-kon="3" data-cyb="2" data-bil="-1" data-cha="0" data-psi="-2" data-seh="-2" data-hrv="0" data-ger="5" data-tst="-3" data-int="0" data-stf="0" data-tp="5">
+                                            Krebs (Pr’tlac, ♂)
+                                        </option>
+                                        <option data-str="0" data-ges="2" data-bew="5" data-kon="-2" data-cyb="0" data-bil="0" data-cha="0" data-psi="0" data-seh="-5" data-hrv="1" data-ger="5" data-tst="0" data-int="0" data-stf="2" data-tp="-5">
+                                            Krake (Zss’pirr)
+                                        </option>
+                                    </optgroup>
+                                </select>
+                            </td>
+                            <td>
+                                <input type="text" readonly id="gp-display">
+                            </td>
+                            <td>
+                                <input type="text" readonly id="fp-display">
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </li>
+            <li><form id="base-attributes">
+                <table id="attribute" cellspacing="0">
+                    <caption>Basisattribute</caption>
+                    <thead>
+                        <tr>
+                            <th title="Stärke">STR</th>
+                            <th title="Geschicklichkeit">GES</th>
+                            <th title="Beweglichkeit">BEW</th>
+                            <th title="Konstitution">KON</th>
+                            <th title="Cyberverträglichkeit">CYB</th>
+                            <th title="Bildung">BIL</th>
+                            <th title="Charisma">CHA</th>
+                            <th title="Psi">PSI</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>
+                                <input type="number" min="0" max="30" value="14" id="str" class="gp-input">
+                            </td>
+                            <td>
+                                <input type="number" min="0" max="30" value="14" id="ges" class="gp-input">
+                            </td>
+                            <td>
+                                <input type="number" min="0" max="30" value="14" id="bew" class="gp-input">
+                            </td>
+                            <td>
+                                <input type="number" min="0" max="30" value="14" id="kon" class="gp-input">
+                            </td>
+                            <td>
+                                <input type="number" min="0" max="30" value="14" id="cyb" class="gp-input no-raise">
+                            </td>
+                            <td>
+                                <input type="number" min="0" max="30" value="14" id="bil" class="gp-input">
+                            </td>
+                            <td>
+                                <input type="number" min="0" max="30" value="14" id="cha" class="gp-input">
+                            </td>
+                            <td>
+                                <input type="number" min="0" max="30" value="14" id="psi" class="gp-input no-raise">
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                <table id="sense" cellspacing="0">
+                    <caption>Sinneswerte</caption>
+                    <thead>
+                        <tr>
+                            <th title="Sehen">SEH</th>
+                            <th title="Hören">HRV</th>
+                            <th title="Riechen">GER</th>
+                            <th title="Schmecken">GSM</th>
+                            <th title="Tasten">TST</th>
+                            <th title="Intuition">INT</th>
+                            <th title="Stromfühlen">STF</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>
+                                <input type="number" min="0" max="30" value="14" id="seh" class="gp-input">
+                            </td>
+                            <td>
+                                <input type="number" min="0" max="30" value="14" id="hrv" class="gp-input">
+                            </td>
+                            <td>
+                                <input type="number" min="0" max="30" value="14" id="ger" class="gp-input">
+                            </td>
+                            <td>
+                                <input type="number" min="0" max="30" value="14" id="gsm" class="gp-input">
+                            </td>
+                            <td>
+                                <input type="number" min="0" max="30" value="14" id="tst" class="gp-input">
+                            </td>
+                            <td>
+                                <input type="number" min="0" max="30" value="14" id="int" class="gp-input">
+                            </td>
+                            <td>
+                                <input disabled type="number" min="0" max="30" value="14" id="stf" class="gp-input">
+                            </td>
+                            <td></td>
+                        </tr>
+                    </tbody>
+                </table></form>
+            </li>
+            <li>
+                <table class="ability" cellspacing="0">
+                    <caption>Körperliche Fertigkeiten</caption>
+                    <colgroup>
+                        <col style="width: 10%">
+                        <col style="width: 30%">
+                        <col style="width: 30%">
+                        <col style="width: 10%">
+                        <col style="width: 10%">
+                        <col style="width: 10%">
+                    </colgroup>
+                    <thead>
+                        <tr>
+                            <th>Prio</th>
+                            <th>Fertigkeit</th>
+                            <th>Spez.</th>
+                            <th title="Lernpunkte">LP</th>
+                            <th title="Stufe">St.</th>
+                            <th>Wert</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>
+                                <input type="number" min="0" max="3" value="1" class="priority">
+                            </td>
+                            <td>Akrobatik</td>
+                            <td>
+                                <select size="1" class="speciality">
+                                    <option></option>
+                                    <option>Balancieren</option>
+                                    <option>Reiten</option>
+                                    <option>Null-g-Bewegung</option>
+                                    <option>Turnen</option>
+                                    <option>Winden</option>
+                                </select>
+                            </td>
+                            <td>
+                                <input type="number" min="0" value="0" class="learning">
+                            </td>
+                            <td>
+                                <input type="number" min="0" class="level" value="">
+                                <input type="hidden" class="bonus" name="bew" value="11">
+                                <input type="hidden" class="bonus" name="ges" value="18">
+                            </td>
+                            <td>
+                                <input type="text" readonly class="value">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <input type="number" min="0" max="3" value="1" class="priority">
+                            </td>
+                            <td>Anzüge</td>
+                            <td>
+                                <select size="1" class="speciality">
+                                    <option></option>
+                                    <option>Kampfpanzer</option>
+                                    <option>Nanoanzug</option>
+                                    <option>Raumanzug</option>
+                                    <option>Rüstung</option>
+                                    <option>Schutzanzug</option>
+                                    <option>Taucheranzug</option>
+                                </select>
+                            </td>
+                            <td>
+                                <input type="number" min="0" value="0" class="learning">
+                            </td>
+                            <td>
+                                <input type="number" min="0" class="level" value="">
+                                <input type="hidden" class="bonus" name="cyb" value="11">
+                                <input type="hidden" class="bonus" name="ges" value="17">
+                            </td>
+                            <td>
+                                <input type="text" readonly class="value">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <input type="number" min="0" max="3" value="1" class="priority">
+                            </td>
+                            <td>Athletik</td>
+                            <td>
+                                <select size="1" class="speciality">
+                                    <option></option>
+                                    <option>Heben</option>
+                                    <option>Klettern</option>
+                                    <option>Laufen</option>
+                                    <option>Schwimmen</option>
+                                    <option>Springen</option>
+                                    <option>Werfen</option>
+                                </select>
+                            </td>
+                            <td>
+                                <input type="number" min="0" value="0" class="learning">
+                            </td>
+                            <td>
+                                <input type="number" min="0" class="level" value="">
+                                <input type="hidden" class="bonus" name="str" value="11">
+                                <input type="hidden" class="bonus" name="bew" value="17">
+                            </td>
+                            <td>
+                                <input type="text" readonly class="value">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <input type="number" min="0" max="3" value="1" class="priority">
+                            </td>
+                            <td>Ausdauer</td>
+                            <td>
+                                <select size="1" class="speciality">
+                                    <option></option>
+                                    <option>Erschöpfung</option>
+                                    <option>Hoch-g-Belastung</option>
+                                    <option>Schmerzen</option>
+                                </select>
+                            </td>
+                            <td>
+                                <input type="number" min="0" value="0" class="learning">
+                            </td>
+                            <td>
+                                <input type="number" min="0" class="level" value="">
+                                <input type="hidden" class="bonus" name="kon" value="12">
+                                <input type="hidden" class="bonus" name="str" value="18">
+                            </td>
+                            <td>
+                                <input type="text" readonly class="value">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <input type="number" min="0" max="3" value="1" class="priority">
+                            </td>
+                            <td>Fingerfertigkeit</td>
+                            <td>
+                                <select size="1" class="speciality">
+                                    <option></option>
+                                    <option>Fangen</option>
+                                    <option>Feinarbeit</option>
+                                    <option>Stehlen</option>
+                                    <option>Tricks</option>
+                                    <option>Waffe ziehen</option>
+                                </select>
+                            </td>
+                            <td>
+                                <input type="number" min="0" value="0" class="learning">
+                            </td>
+                            <td>
+                                <input type="number" min="0" class="level" value="">
+                                <input type="hidden" class="bonus" name="ges" value="12">
+                                <input type="hidden" class="bonus" name="bew" value="17">
+                            </td>
+                            <td>
+                                <input type="text" readonly class="value">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <input type="number" min="0" max="3" value="1" class="priority">
+                            </td>
+                            <td>Heimlichkeit</td>
+                            <td>
+                                <select size="1" class="speciality">
+                                    <option></option>
+                                    <option>Beschatten</option>
+                                    <option>Schleichen</option>
+                                    <option>Verbergen</option>
+                                </select>
+                            </td>
+                            <td>
+                                <input type="number" min="0" value="0" class="learning">
+                            </td>
+                            <td>
+                                <input type="number" min="0" class="level" value="">
+                                <input type="hidden" class="bonus" name="bew" value="14">
+                                <input type="hidden" class="bonus" name="ges" value="19">
+                            </td>
+                            <td>
+                                <input type="text" readonly class="value">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <input type="number" min="0" max="3" value="1" class="priority">
+                            </td>
+                            <td>Pilot</td>
+                            <td>
+                                <select size="1" class="speciality">
+                                    <option></option>
+                                    <option>Antigrav-Fahrzeuge</option>
+                                    <option>Bodenfahrzeuge</option>
+                                    <option>Flugzeuge</option>
+                                    <option>Raumjäger</option>
+                                    <option>Rotormaschinen</option>
+                                    <option>Wasserfahrzeuge</option>
+                                </select>
+                            </td>
+                            <td>
+                                <input type="number" min="0" value="0" class="learning">
+                            </td>
+                            <td>
+                                <input type="number" min="0" class="level" value="">
+                                <input type="hidden" class="bonus" name="ges" value="13">
+                                <input type="hidden" class="bonus" name="kon" value="18">
+                            </td>
+                            <td>
+                                <input type="text" readonly class="value">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <input type="number" min="0" max="3" value="1" class="priority">
+                            </td>
+                            <td>Waffenloser Kampf</td>
+                            <td>
+                                <select size="1" class="speciality">
+                                    <option></option>
+                                    <option>Ausweichen</option>
+                                    <option>Cyberwaffen</option>
+                                    <option>Natürliche Waffen</option>
+                                    <option>Schlagtechnik</option>
+                                    <option>Wurftechnik</option>
+                                </select>
+                            </td>
+                            <td>
+                                <input type="number" min="0" value="0" class="learning">
+                            </td>
+                            <td>
+                                <input type="number" min="0" class="level" value="">
+                                <input type="hidden" class="bonus" name="bew" value="12">
+                                <input type="hidden" class="bonus" name="str" value="18">
+                            </td>
+                            <td>
+                                <input type="text" readonly class="value">
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                <table class="ability" cellspacing="0">
+                    <caption>Waffenfertigkeiten</caption>
+                    <colgroup>
+                        <col style="width: 10%">
+                        <col style="width: 30%">
+                        <col style="width: 30%">
+                        <col style="width: 10%">
+                        <col style="width: 10%">
+                        <col style="width: 10%">
+                    </colgroup>
+                    <thead>
+                        <tr>
+                            <th>Prio</th>
+                            <th>Fertigkeit</th>
+                            <th>Spez.</th>
+                            <th title="Lernpunkte">LP</th>
+                            <th title="Stufe">St.</th>
+                            <th>Wert</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>
+                                <input type="number" min="0" max="3" value="1" class="priority">
+                            </td>
+                            <td>Abwehrwaffen</td>
+                            <td>
+                                <select size="1" class="speciality">
+                                    <option></option>
+                                    <option>Stab</option>
+                                    <option>Parierwaffe</option>
+                                    <option>Schild</option>
+                                </select>
+                            </td>
+                            <td>
+                                <input type="number" min="0" value="0" class="learning">
+                            </td>
+                            <td>
+                                <input type="number" min="0" class="level" value="">
+                                <input type="hidden" class="bonus" name="bew" value="13">
+                                <input type="hidden" class="bonus" name="str" value="16">
+                            </td>
+                            <td>
+                                <input type="text" readonly class="value">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <input type="number" min="0" max="3" value="1" class="priority">
+                            </td>
+                            <td>Feuerwaffen</td>
+                            <td>
+                                <select size="1" class="speciality">
+                                    <option></option>
+                                    <option>1H-Energiewaffe</option>
+                                    <option>2H-Energiewaffe</option>
+                                    <option>1H-Feuerwaffe</option>
+                                    <option>2H-Feuerwaffe</option>
+                                </select>
+                            </td>
+                            <td>
+                                <input type="number" min="0" value="0" class="learning">
+                            </td>
+                            <td>
+                                <input type="number" min="0" class="level" value="">
+                                <input type="hidden" class="bonus" name="ges" value="11">
+                                <input type="hidden" class="bonus" name="bew" value="18">
+                            </td>
+                            <td>
+                                <input type="text" readonly class="value">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <input type="number" min="0" max="3" value="1" class="priority">
+                            </td>
+                            <td>Geschütze</td>
+                            <td>
+                                <select size="1" class="speciality">
+                                    <option></option>
+                                    <option>Abwehrsysteme</option>
+                                    <option>Energiegeschütz</option>
+                                    <option>Fahrzeuggeschütz</option>
+                                    <option>Lafette</option>
+                                </select>
+                            </td>
+                            <td>
+                                <input type="number" min="0" value="0" class="learning">
+                            </td>
+                            <td>
+                                <input type="number" min="0" class="level" value="">
+                                <input type="hidden" class="bonus" name="ges" value="12">
+                                <input type="hidden" class="bonus" name="bil" value="16">
+                            </td>
+                            <td>
+                                <input type="text" readonly class="value">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <input type="number" min="0" max="3" value="1" class="priority">
+                            </td>
+                            <td>Nahkampfwaffen</td>
+                            <td>
+                                <select size="1" class="speciality">
+                                    <option></option>
+                                    <option>Kettenwaffe</option>
+                                    <option>Klingenwaffe</option>
+                                    <option>Schlagwaffe</option>
+                                    <option>Stangenwaffe</option>
+                                </select>
+                            </td>
+                            <td>
+                                <input type="number" min="0" value="0" class="learning">
+                            </td>
+                            <td>
+                                <input type="number" min="0" class="level" value="">
+                                <input type="hidden" class="bonus" name="str" value="13">
+                                <input type="hidden" class="bonus" name="bew" value="18">
+                            </td>
+                            <td>
+                                <input type="text" readonly class="value">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <input type="number" min="0" max="3" value="1" class="priority">
+                            </td>
+                            <td>Projektilwaffen</td>
+                            <td>
+                                <select size="1" class="speciality">
+                                    <option></option>
+                                    <option>Arnbrust</option>
+                                    <option>Bogen</option>
+                                    <option>Schleuder</option>
+                                </select>
+                            </td>
+                            <td>
+                                <input type="number" min="0" value="0" class="learning">
+                            </td>
+                            <td>
+                                <input type="number" min="0" class="level" value="">
+                                <input type="hidden" class="bonus" name="ges" value="14">
+                                <input type="hidden" class="bonus" name="bew" value="18">
+                            </td>
+                            <td>
+                                <input type="text" readonly class="value">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <input type="number" min="0" max="3" value="1" class="priority">
+                            </td>
+                            <td>Schwere Waffen</td>
+                            <td>
+                                <select size="1" class="speciality">
+                                    <option></option>
+                                    <option>Energiewerfer</option>
+                                    <option>Gatling</option>
+                                    <option>Granatwerfer</option>
+                                    <option>Raketenwerfer</option>
+                                </select>
+                            </td>
+                            <td>
+                                <input type="number" min="0" value="0" class="learning">
+                            </td>
+                            <td>
+                                <input type="number" min="0" class="level" value="">
+                                <input type="hidden" class="bonus" name="str" value="14">
+                                <input type="hidden" class="bonus" name="ges" value="16">
+                            </td>
+                            <td>
+                                <input type="text" readonly class="value">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <input type="number" min="0" max="3" value="1" class="priority">
+                            </td>
+                            <td>Spezialwaffen</td>
+                            <td>
+                                <select size="1" class="speciality">
+                                    <option></option>
+                                    <option>Blasrohr</option>
+                                    <option>improvisiert</option>
+                                    <option>Laserschwert</option>
+                                    <option>Netz / Lasso</option>
+                                    <option>Peitsche</option>
+                                </select>
+                            </td>
+                            <td>
+                                <input type="number" min="0" value="0" class="learning">
+                            </td>
+                            <td>
+                                <input type="number" min="0" class="level" value="">
+                                <input type="hidden" class="bonus" name="ges" value="13">
+                                <input type="hidden" class="bonus" name="bew" value="17">
+                            </td>
+                            <td>
+                                <input type="text" readonly class="value">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <input type="number" min="0" max="3" value="1" class="priority">
+                            </td>
+                            <td>Wurfwaffen</td>
+                            <td>
+                                <select size="1" class="speciality">
+                                    <option></option>
+                                    <option>Axt</option>
+                                    <option>Granate</option>
+                                    <option>Klinge</option>
+                                    <option>Stange</option>
+                                </select>
+                            </td>
+                            <td>
+                                <input type="number" min="0" value="0" class="learning">
+                            </td>
+                            <td>
+                                <input type="number" min="0" class="level" value="">
+                                <input type="hidden" class="bonus" name="" value="">
+                                <input type="hidden" class="bonus" name="" value="">
+                            </td>
+                            <td>
+                                <input type="text" readonly class="value">
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </li>
+            <li>
+                <table class="ability" cellspacing="0">
+                    <caption>Soziale Fertigkeiten</caption>
+                    <colgroup>
+                        <col style="width: 10%">
+                        <col style="width: 30%">
+                        <col style="width: 30%">
+                        <col style="width: 10%">
+                        <col style="width: 10%">
+                        <col style="width: 10%">
+                    </colgroup>
+                    <thead>
+                        <tr>
+                            <th>Prio</th>
+                            <th>Fertigkeit</th>
+                            <th>Spez.</th>
+                            <th title="Lernpunkte">LP</th>
+                            <th title="Stufe">St.</th>
+                            <th>Wert</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>
+                                <input type="number" min="0" max="3" value="1" class="priority">
+                            </td>
+                            <td>Allgemeinwissen</td>
+                            <td>
+                                <select size="1" class="speciality">
+                                    <option></option>
+                                    <option>Etikette</option>
+                                    <option>Kulturkunde</option>
+                                    <option>Religion</option>
+                                    <option>Sagenkunde</option>
+                                </select>
+                            </td>
+                            <td>
+                                <input type="number" min="0" value="0" class="learning">
+                            </td>
+                            <td>
+                                <input type="number" min="0" class="level" value="">
+                                <input type="hidden" class="bonus" name="bil" value="11">
+                                <input type="hidden" class="bonus" name="cha" value="18">
+                            </td>
+                            <td>
+                                <input type="text" readonly class="value">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <input type="number" min="0" max="3" value="1" class="priority">
+                            </td>
+                            <td>Belastbarkeit</td>
+                            <td>
+                                <select size="1" class="speciality">
+                                    <option></option>
+                                    <option>Courage</option>
+                                    <option>Disziplin</option>
+                                    <option>Meditation</option>
+                                    <option>Toleranz</option>
+                                </select>
+                            </td>
+                            <td>
+                                <input type="number" min="0" value="0" class="learning">
+                            </td>
+                            <td>
+                                <input type="number" min="0" class="level" value="">
+                                <input type="hidden" class="bonus" name="psi" value="14">
+                                <input type="hidden" class="bonus" name="bil" value="18">
+                            </td>
+                            <td>
+                                <input type="text" readonly class="value">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <input type="number" min="0" max="3" value="1" class="priority">
+                            </td>
+                            <td>Kultur</td>
+                            <td>
+                                <select size="1" class="speciality">
+                                    <option></option>
+                                    <option>Kunsthandwerk</option>
+                                    <option>Musik</option>
+                                    <option>Schauspielerei</option>
+                                    <option>Stimme</option>
+                                    <option>Tanz</option>
+                                </select>
+                            </td>
+                            <td>
+                                <input type="number" min="0" value="0" class="learning">
+                            </td>
+                            <td>
+                                <input type="number" min="0" class="level" value="">
+                                <input type="hidden" class="bonus" name="cha" value="13">
+                                <input type="hidden" class="bonus" name="ges" value="17">
+                            </td>
+                            <td>
+                                <input type="text" readonly class="value">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <input type="number" min="0" max="3" value="1" class="priority">
+                            </td>
+                            <td>Milieu</td>
+                            <td>
+                                <select size="1" class="speciality">
+                                    <option></option>
+                                    <option>Medien</option>
+                                    <option>Militär</option>
+                                    <option>Politik</option>
+                                    <option>Polizei</option>
+                                    <option>Unternehmen</option>
+                                    <option>Unterwelt</option>
+                                </select>
+                            </td>
+                            <td>
+                                <input type="number" min="0" value="0" class="learning">
+                            </td>
+                            <td>
+                                <input type="number" min="0" class="level" value="">
+                                <input type="hidden" class="bonus" name="cha" value="12">
+                                <input type="hidden" class="bonus" name="bil" value="18">
+                            </td>
+                            <td>
+                                <input type="text" readonly class="value">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <input type="number" min="0" max="3" value="1" class="priority">
+                            </td>
+                            <td>Ökologie</td>
+                            <td>
+                                <select size="1" class="speciality">
+                                    <option></option>
+                                    <option>Fauna</option>
+                                    <option>Flora</option>
+                                    <option>Klima</option>
+                                    <option>Urban</option>
+                                </select>
+                            </td>
+                            <td>
+                                <input type="number" min="0" value="0" class="learning">
+                            </td>
+                            <td>
+                                <input type="number" min="0" class="level" value="">
+                                <input type="hidden" class="bonus" name="ges" value="12">
+                                <input type="hidden" class="bonus" name="bil" value="16">
+                            </td>
+                            <td>
+                                <input type="text" readonly class="value">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <input type="number" min="0" max="3" value="1" class="priority">
+                            </td>
+                            <td>Psychologie</td>
+                            <td>
+                                <select size="1" class="speciality">
+                                    <option></option>
+                                    <option>Gruppe</option>
+                                    <option>Individuum</option>
+                                    <option>Therapie</option>
+                                    <option>Xenopsychologie</option>
+                                </select>
+                            </td>
+                            <td>
+                                <input type="number" min="0" value="0" class="learning">
+                            </td>
+                            <td>
+                                <input type="number" min="0" class="level" value="">
+                                <input type="hidden" class="bonus" name="bil" value="12">
+                                <input type="hidden" class="bonus" name="psi" value="16">
+                            </td>
+                            <td>
+                                <input type="text" readonly class="value">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <input type="number" min="0" max="3" value="1" class="priority">
+                            </td>
+                            <td>Rhetorik</td>
+                            <td>
+                                <select size="1" class="speciality">
+                                    <option></option>
+                                    <option>Führung</option>
+                                    <option>Überzeugen</option>
+                                    <option>Verführen</option>
+                                    <option>Verhören</option>
+                                </select>
+                            </td>
+                            <td>
+                                <input type="number" min="0" value="0" class="learning">
+                            </td>
+                            <td>
+                                <input type="number" min="0" class="level" value="">
+                                <input type="hidden" class="bonus" name="cha" value="13">
+                                <input type="hidden" class="bonus" name="bil" value="16">
+                            </td>
+                            <td>
+                                <input type="text" readonly class="value">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <input type="number" min="0" max="3" value="1" class="priority">
+                            </td>
+                            <td>Verwaltung</td>
+                            <td>
+                                <select size="1" class="speciality">
+                                    <option></option>
+                                    <option>Administration</option>
+                                    <option>Logistik</option>
+                                    <option>Recht</option>
+                                </select>
+                            </td>
+                            <td>
+                                <input type="number" min="0" value="0" class="learning">
+                            </td>
+                            <td>
+                                <input type="number" min="0" class="level" value="">
+                                <input type="hidden" class="bonus" name="ges" value="11">
+                                <input type="hidden" class="bonus" name="cha" value="17">
+                            </td>
+                            <td>
+                                <input type="text" readonly class="value">
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                <table class="ability" cellspacing="0">
+                    <caption>Geistige Fertigkeiten</caption>
+                    <colgroup>
+                        <col style="width: 10%">
+                        <col style="width: 30%">
+                        <col style="width: 30%">
+                        <col style="width: 10%">
+                        <col style="width: 10%">
+                        <col style="width: 10%">
+                    </colgroup>
+                    <thead>
+                        <tr>
+                            <th>Prio</th>
+                            <th>Fertigkeit</th>
+                            <th>Spez.</th>
+                            <th title="Lernpunkte">LP</th>
+                            <th title="Stufe">St.</th>
+                            <th>Wert</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>
+                                <input type="number" min="0" max="3" value="1" class="priority">
+                            </td>
+                            <td>Elektronik</td>
+                            <td>
+                                <select size="1" class="speciality">
+                                    <option></option>
+                                    <option>Feinelektronik</option>
+                                    <option>Geräte</option>
+                                    <option>Netzwerk</option>
+                                    <option>Zünder</option>
+                                </select>
+                            </td>
+                            <td>
+                                <input type="number" min="0" value="0" class="learning">
+                            </td>
+                            <td>
+                                <input type="number" min="0" class="level" value="">
+                                <input type="hidden" class="bonus" name="bil" value="13">
+                                <input type="hidden" class="bonus" name="cyb" value="17">
+                            </td>
+                            <td>
+                                <input type="text" readonly class="value">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <input type="number" min="0" max="3" value="1" class="priority">
+                            </td>
+                            <td>Geisteswiss.</td>
+                            <td>
+                                <select size="1" class="speciality">
+                                    <option></option>
+                                    <option>Linguistik</option>
+                                    <option>Mathematik</option>
+                                    <option>Philosophie</option>
+                                    <option>Semiotik</option>
+                                    <option>Theologie</option>
+                                </select>
+                            </td>
+                            <td>
+                                <input type="number" min="0" value="0" class="learning">
+                            </td>
+                            <td>
+                                <input type="number" min="0" class="level" value="">
+                                <input type="hidden" class="bonus" name="cha" value="12">
+                                <input type="hidden" class="bonus" name="bil" value="17">
+                            </td>
+                            <td>
+                                <input type="text" readonly class="value">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <input type="number" min="0" max="3" value="1" class="priority">
+                            </td>
+                            <td>Gesellschaftswiss.</td>
+                            <td>
+                                <select size="1" class="speciality">
+                                    <option></option>
+                                    <option>Geschichte</option>
+                                    <option>Jura</option>
+                                    <option>Kunst</option>
+                                    <option>Pädagogik</option>
+                                    <option>Politologie</option>
+                                    <option>Soziologie</option>
+                                    <option>Wirtschaft</option>
+                                </select>
+                            </td>
+                            <td>
+                                <input type="number" min="0" value="0" class="learning">
+                            </td>
+                            <td>
+                                <input type="number" min="0" class="level" value="">
+                                <input type="hidden" class="bonus" name="bil" value="12">
+                                <input type="hidden" class="bonus" name="cha" value="17">
+                            </td>
+                            <td>
+                                <input type="text" readonly class="value">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <input type="number" min="0" max="3" value="1" class="priority">
+                            </td>
+                            <td>Informatik</td>
+                            <td>
+                                <select size="1" class="speciality">
+                                    <option></option>
+                                    <option>Anwendungen</option>
+                                    <option>Entwicklung</option>
+                                    <option>Hacking</option>
+                                    <option>Hardware</option>
+                                </select>
+                            </td>
+                            <td>
+                                <input type="number" min="0" value="0" class="learning">
+                            </td>
+                            <td>
+                                <input type="number" min="0" class="level" value="">
+                                <input type="hidden" class="bonus" name="bil" value="11">
+                                <input type="hidden" class="bonus" name="cyb" value="18">
+                            </td>
+                            <td>
+                                <input type="text" readonly class="value">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <input type="number" min="0" max="3" value="1" class="priority">
+                            </td>
+                            <td>Ingenieur</td>
+                            <td>
+                                <select size="1" class="speciality">
+                                    <option></option>
+                                    <option>Anlagen</option>
+                                    <option>Autonome Systeme</option>
+                                    <option>Bauwerke</option>
+                                    <option>Bodenfahrzeuge</option>
+                                    <option>Raumfahrzeuge</option>
+                                    <option>Sprengtechnik</option>
+                                    <option>Wasserfahrzeuge</option>
+                                </select>
+                            </td>
+                            <td>
+                                <input type="number" min="0" value="0" class="learning">
+                            </td>
+                            <td>
+                                <input type="number" min="0" class="level" value="">
+                                <input type="hidden" class="bonus" name="bil" value="14">
+                                <input type="hidden" class="bonus" name="ges" value="18">
+                            </td>
+                            <td>
+                                <input type="text" readonly class="value">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <input type="number" min="0" max="3" value="1" class="priority">
+                            </td>
+                            <td>Kontrollzentrum</td>
+                            <td>
+                                <select size="1" class="speciality">
+                                    <option></option>
+                                    <option>Anlagen</option>
+                                    <option>Autonome Systeme</option>
+                                    <option>Bodenfahrzeuge</option>
+                                    <option>Raumfahrzeuge</option>
+                                    <option>Wasserfahrzeuge</option>
+                                </select>
+                            </td>
+                            <td>
+                                <input type="number" min="0" value="0" class="learning">
+                            </td>
+                            <td>
+                                <input type="number" min="0" class="level" value="">
+                                <input type="hidden" class="bonus" name="bil" value="12">
+                                <input type="hidden" class="bonus" name="ges" value="16">
+                            </td>
+                            <td>
+                                <input type="text" readonly class="value">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <input type="number" min="0" max="3" value="1" class="priority">
+                            </td>
+                            <td>Medizin</td>
+                            <td>
+                                <select size="1" class="speciality">
+                                    <option></option>
+                                    <option>Allgemeinmedizin</option>
+                                    <option>Biotech</option>
+                                    <option>Chirurgie</option>
+                                    <option>Erste Hilfe</option>
+                                    <option>Xenomedizin</option>
+                                </select>
+                            </td>
+                            <td>
+                                <input type="number" min="0" value="0" class="learning">
+                            </td>
+                            <td>
+                                <input type="number" min="0" class="level" value="">
+                                <input type="hidden" class="bonus" name="bil" value="14">
+                                <input type="hidden" class="bonus" name="ges" value="18">
+                            </td>
+                            <td>
+                                <input type="text" readonly class="value">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <input type="number" min="0" max="3" value="1" class="priority">
+                            </td>
+                            <td>Naturwiss.</td>
+                            <td>
+                                <select size="1" class="speciality">
+                                    <option></option>
+                                    <option>Biologie</option>
+                                    <option>Chemie</option>
+                                    <option>Geologie</option>
+                                    <option>Physik</option>
+                                    <option>Psionik</option>
+                                </select>
+                            </td>
+                            <td>
+                                <input type="number" min="0" value="0" class="learning">
+                            </td>
+                            <td>
+                                <input type="number" min="0" class="level" value="">
+                                <input type="hidden" class="bonus" name="bil" value="13">
+                                <input type="hidden" class="bonus" name="cha" value="18">
+                            </td>
+                            <td>
+                                <input type="text" readonly class="value">
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </li>
+            <li>
+                <table class="ability" cellspacing="0">
+                    <caption>PSI-Fertigkeiten</caption>
+                    <colgroup>
+                        <col style="width: 10%">
+                        <col style="width: 30%">
+                        <col style="width: 30%">
+                        <col style="width: 10%">
+                        <col style="width: 10%">
+                        <col style="width: 10%">
+                    </colgroup>
+                    <thead>
+                        <tr>
+                            <th>Prio</th>
+                            <th>Fertigkeit</th>
+                            <th>Spez.</th>
+                            <th title="Lernpunkte">LP</th>
+                            <th title="Stufe">St.</th>
+                            <th>Wert</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>
+                                <input type="number" min="0" max="3" value="0" class="priority">
+                            </td>
+                            <td>Bewegung</td>
+                            <td>
+                                <select size="1" class="speciality">
+                                    <option></option>
+                                    <option>Kraftfeld</option>
+                                    <option>Telekinese</option>
+                                    <option>Teleport</option>
+                                </select>
+                            </td>
+                            <td>
+                                <input type="number" min="0" value="0" class="learning">
+                            </td>
+                            <td>
+                                <input type="number" min="0" class="level" value="">
+                                <input type="hidden" class="bonus" name="bew" value="13">
+                                <input type="hidden" class="bonus" name="ges" value="17">
+                            </td>
+                            <td>
+                                <input type="text" readonly class="value">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <input type="number" min="0" max="3" value="0" class="priority">
+                            </td>
+                            <td>Geist</td>
+                            <td>
+                                <select size="1" class="speciality">
+                                    <option></option>
+                                    <option>Empathie</option>
+                                    <option>Kontrolle</option>
+                                    <option>Telepathie</option>
+                                </select>
+                            </td>
+                            <td>
+                                <input type="number" min="0" value="0" class="learning">
+                            </td>
+                            <td>
+                                <input type="number" min="0" class="level" value="">
+                                <input type="hidden" class="bonus" name="cha" value="12">
+                                <input type="hidden" class="bonus" name="psi" value="18">
+                            </td>
+                            <td>
+                                <input type="text" readonly class="value">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <input type="number" min="0" max="3" value="0" class="priority">
+                            </td>
+                            <td>Körper</td>
+                            <td>
+                                <select size="1" class="speciality">
+                                    <option></option>
+                                    <option>Haut</option>
+                                    <option>Muskulatur</option>
+                                    <option>Nervensystem</option>
+                                    <option>Organe</option>
+                                    <option>Skelett</option>
+                                </select>
+                            </td>
+                            <td>
+                                <input type="number" min="0" value="0" class="learning">
+                            </td>
+                            <td>
+                                <input type="number" min="0" class="level" value="">
+                                <input type="hidden" class="bonus" name="str" value="13">
+                                <input type="hidden" class="bonus" name="kon" value="16">
+                            </td>
+                            <td>
+                                <input type="text" readonly class="value">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <input type="number" min="0" max="3" value="0" class="priority">
+                            </td>
+                            <td>Leben</td>
+                            <td>
+                                <select size="1" class="speciality">
+                                    <option></option>
+                                    <option>Erschöpfung</option>
+                                    <option>Infektion</option>
+                                    <option>Vergiftung</option>
+                                    <option>Verletzung</option>
+                                </select>
+                            </td>
+                            <td>
+                                <input type="number" min="0" value="0" class="learning">
+                            </td>
+                            <td>
+                                <input type="number" min="0" class="level" value="">
+                                <input type="hidden" class="bonus" name="kon" value="11">
+                                <input type="hidden" class="bonus" name="ges" value="18">
+                            </td>
+                            <td>
+                                <input type="text" readonly class="value">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <input type="number" min="0" max="3" value="0" class="priority">
+                            </td>
+                            <td>Materie</td>
+                            <td>
+                                <select size="1" class="speciality">
+                                    <option></option>
+                                    <option>Formen</option>
+                                    <option>Kombinieren</option>
+                                </select>
+                            </td>
+                            <td>
+                                <input type="number" min="0" value="0" class="learning">
+                            </td>
+                            <td>
+                                <input type="number" min="0" class="level" value="">
+                                <input type="hidden" class="bonus" name="cyb" value="11">
+                                <input type="hidden" class="bonus" name="bew" value="16">
+                            </td>
+                            <td>
+                                <input type="text" readonly class="value">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <input type="number" min="0" max="3" value="0" class="priority">
+                            </td>
+                            <td>PSI-Abwehr</td>
+                            <td>
+                                <input type="text" class="speciality">
+                            </td>
+                            <td>
+                                <input type="number" min="0" value="0" class="learning">
+                            </td>
+                            <td>
+                                <input type="number" min="0" class="level" value="">
+                                <input type="hidden" class="bonus" name="psi" value="12">
+                                <input type="hidden" class="bonus" name="bil" value="18">
+                            </td>
+                            <td>
+                                <input type="text" readonly class="value">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <input type="number" min="0" max="3" value="0" class="priority">
+                            </td>
+                            <td>Schock</td>
+                            <td>
+                                <select size="1" class="speciality">
+                                    <option></option>
+                                    <option>Fläche</option>
+                                    <option>Individuum</option>
+                                    <option>Objekt</option>
+                                </select>
+                            </td>
+                            <td>
+                                <input type="number" min="0" value="0" class="learning">
+                            </td>
+                            <td>
+                                <input type="number" min="0" class="level" value="">
+                                <input type="hidden" class="bonus" name="ges" value="13">
+                                <input type="hidden" class="bonus" name="str" value="17">
+                            </td>
+                            <td>
+                                <input type="text" readonly class="value">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <input type="number" min="0" max="3" value="0" class="priority">
+                            </td>
+                            <td>Wahrnehmung</td>
+                            <td>
+                                <select size="1" class="speciality">
+                                    <option></option>
+                                    <option>Deutung</option>
+                                    <option>Makrokosmos</option>
+                                    <option>Mesokosmos</option>
+                                    <option>Mikrokosmos</option>
+                                </select>
+                            </td>
+                            <td>
+                                <input type="number" min="0" value="0" class="learning">
+                            </td>
+                            <td>
+                                <input type="number" min="0" class="level" value="">
+                                <input type="hidden" class="bonus" name="bil" value="14">
+                                <input type="hidden" class="bonus" name="psi" value="17">
+                            </td>
+                            <td>
+                                <input type="text" readonly class="value">
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                <table class="ability" cellspacing="0">
+                    <caption>Sprachen & Hobbies</caption>
+                    <colgroup>
+                        <col style="width: 10%">
+                        <col style="width: 30%">
+                        <col style="width: 30%">
+                        <col style="width: 10%">
+                        <col style="width: 10%">
+                        <col style="width: 10%">
+                    </colgroup>
+                    <thead>
+                        <tr>
+                            <th>Prio</th>
+                            <th>Fertigkeit</th>
+                            <th>Spez.</th>
+                            <th title="Lernpunkte">LP</th>
+                            <th title="Stufe">St.</th>
+                            <th>Wert</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>
+                                <input type="number" min="0" max="3" value="1" class="priority">
+                            </td>
+                            <td>
+                                <input type="text" class="skill">
+                            </td>
+                            <td>
+                                <input type="text" class="speciality">
+                            </td>
+                            <td>
+                                <input type="number" min="0" value="0" class="learning">
+                            </td>
+                            <td>
+                                <input type="number" min="0" class="level" value="">
+                                <input type="hidden" class="bonus" name="" value="">
+                                <input type="hidden" class="bonus" name="" value="">
+                            </td>
+                            <td>
+                                <input type="text" readonly class="value">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <input type="number" min="0" max="3" value="1" class="priority">
+                            </td>
+                            <td>
+                                <input type="text" class="skill">
+                            </td>
+                            <td>
+                                <input type="text" class="speciality">
+                            </td>
+                            <td>
+                                <input type="number" min="0" value="0" class="learning">
+                            </td>
+                            <td>
+                                <input type="number" min="0" class="level" value="">
+                                <input type="hidden" class="bonus" name="" value="">
+                                <input type="hidden" class="bonus" name="" value="">
+                            </td>
+                            <td>
+                                <input type="text" readonly class="value">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <input type="number" min="0" max="3" value="1" class="priority">
+                            </td>
+                            <td>
+                                <input type="text" class="skill">
+                            </td>
+                            <td>
+                                <input type="text" class="speciality">
+                            </td>
+                            <td>
+                                <input type="number" min="0" value="0" class="learning">
+                            </td>
+                            <td>
+                                <input type="number" min="0" class="level" value="">
+                                <input type="hidden" class="bonus" name="" value="">
+                                <input type="hidden" class="bonus" name="" value="">
+                            </td>
+                            <td>
+                                <input type="text" readonly class="value">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <input type="number" min="0" max="3" value="1" class="priority">
+                            </td>
+                            <td>
+                                <input type="text" class="skill">
+                            </td>
+                            <td>
+                                <input type="text" class="speciality">
+                            </td>
+                            <td>
+                                <input type="number" min="0" value="0" class="learning">
+                            </td>
+                            <td>
+                                <input type="number" min="0" class="level" value="">
+                                <input type="hidden" class="bonus" name="" value="">
+                                <input type="hidden" class="bonus" name="" value="">
+                            </td>
+                            <td>
+                                <input type="text" readonly class="value">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <input type="number" min="0" max="3" value="1" class="priority">
+                            </td>
+                            <td>
+                                <input type="text" class="skill">
+                            </td>
+                            <td>
+                                <input type="text" class="speciality">
+                            </td>
+                            <td>
+                                <input type="number" min="0" value="0" class="learning">
+                            </td>
+                            <td>
+                                <input type="number" min="0" class="level" value="">
+                                <input type="hidden" class="bonus" name="" value="">
+                                <input type="hidden" class="bonus" name="" value="">
+                            </td>
+                            <td>
+                                <input type="text" readonly class="value">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <input type="number" min="0" max="3" value="1" class="priority">
+                            </td>
+                            <td>
+                                <input type="text" class="skill">
+                            </td>
+                            <td>
+                                <input type="text" class="speciality">
+                            </td>
+                            <td>
+                                <input type="number" min="0" value="0" class="learning">
+                            </td>
+                            <td>
+                                <input type="number" min="0" class="level" value="">
+                                <input type="hidden" class="bonus" name="" value="">
+                                <input type="hidden" class="bonus" name="" value="">
+                            </td>
+                            <td>
+                                <input type="text" readonly class="value">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <input type="number" min="0" max="3" value="1" class="priority">
+                            </td>
+                            <td>
+                                <input type="text" class="skill">
+                            </td>
+                            <td>
+                                <input type="text" class="speciality">
+                            </td>
+                            <td>
+                                <input type="number" min="0" value="0" class="learning">
+                            </td>
+                            <td>
+                                <input type="number" min="0" class="level" value="">
+                                <input type="hidden" class="bonus" name="" value="">
+                                <input type="hidden" class="bonus" name="" value="">
+                            </td>
+                            <td>
+                                <input type="text" readonly class="value">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <input type="number" min="0" max="3" value="1" class="priority">
+                            </td>
+                            <td>
+                                <input type="text" class="skill">
+                            </td>
+                            <td>
+                                <input type="text" class="speciality">
+                            </td>
+                            <td>
+                                <input type="number" min="0" value="0" class="learning">
+                            </td>
+                            <td>
+                                <input type="number" min="0" class="level" value="">
+                                <input type="hidden" class="bonus" name="" value="">
+                                <input type="hidden" class="bonus" name="" value="">
+                            </td>
+                            <td>
+                                <input type="text" readonly class="value">
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </li>
+        </ul>
+        <script type="application/javascript" src="js/chargen.js"></script>
+    </body>
+</html>

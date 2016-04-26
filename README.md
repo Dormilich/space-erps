@@ -1,2 +1,3 @@
-# space-erps
-a collection of online utilities for the SpaceERPS RPG
+# SpaceERPS Utilities
+
+A collection of online utilities for the SpaceERPS RPG.
